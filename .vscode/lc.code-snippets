@@ -1,0 +1,31 @@
+{
+    "LeetCode Solution Template": {
+        "prefix": "lcsol",
+        "body": [
+            "/**",
+            " * @name ${1}",
+            " * @details ${2}",
+            " * @url ${3}",
+            " * @idea ${4}",
+            " * @note ${5}",
+            " */",
+            "#include \"../header.hpp\"",
+            "",
+            "class Solution",
+            "{",
+            "public:",
+            "   ${6:int functionName()}",
+            "    {",
+            "        return 0;",
+            "    }",
+            "};",
+            "",
+            "int main(int argc, char const *argv[])",
+            "{",
+            "    Solution s;",
+            "    return 0;",
+            "}"
+        ],
+        "description": "LeetCode Solution Template"
+    }
+}

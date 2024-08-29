@@ -1,0 +1,13 @@
+BasedOnStyle: Microsoft
+ColumnLimit: 100
+IndentWidth: 4
+
+AllowShortLoopsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: true
+AllowShortBlocksOnASingleLine: true
+AllowShortFunctionsOnASingleLine: false
+
+Language: Cpp
+AccessModifierOffset: -4
+NamespaceIndentation: None
+IndentAccessModifiers: false
