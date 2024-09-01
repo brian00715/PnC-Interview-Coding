@@ -4,6 +4,9 @@
 import os
 import shutil
 
+must_clean_keywords = [
+    "sync-conflict",
+]
 ignore_exts = [
     "cpp",
     "cc",
@@ -24,13 +27,13 @@ igore_dirs = [".vscode", ".git", "./.git"]
 dir_keywords = [".dSYM", "build", "test", "__pycache__"]
 
 
-def clean(path):
+def clean(path, debug=False):
     """Recursively clean all files and folders without the enxtension .cpp or .hpp"""
     for root, dirs, files in os.walk(path):
         dirs[:] = [d for d in dirs if d not in ignore_exts]
 
         for file in files:
-            if file.split(".")[-1] not in ignore_exts:
+            if file.split(".")[-1] not in ignore_exts or sum([1 if x in file else 0 for x in must_clean_keywords]) >= 1:
                 os.remove(os.path.join(root, file))
                 print(f"remove {os.path.join(root, file)}")
                 pass
@@ -43,4 +46,4 @@ def clean(path):
 
 
 if __name__ == "__main__":
-    clean(".")
+    clean(".", debug=True)

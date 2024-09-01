@@ -9,7 +9,7 @@
 ## 使用说明
 
 在 `header.hpp`中已包含刷题常用的头文件和命名空间，实现了一些常用的数据结构和算法。
-在 `.vscode`中已经配置好了基于 clang 的 vscode 调试环境和快捷命令。输入 `lcsol`即可生成一个新的 leetcode 答题模板。
+在 `.vscode`中已经配置好了基于 clang 的 vscode 调试环境和快捷命令, 输入 `lcsol`并回车即可生成一个新的 leetcode 答题模板。
 
 - 清理 clang 编译文件: `python clean.py`
 - 统计代码文件与行数: `bash ./count.sh`
@@ -18,26 +18,19 @@
 
 ## Array
 
-- 打印类
+### 打印类
 
   - [x] [54[M]. 螺旋矩阵](https://leetcode.cn/problems/spiral-matrix/)
   - [x] [48[M]. 旋转图像](https://leetcode.cn/problems/rotate-image/). 先水平翻转再对角线翻转
   - [ ] [498[M]. 对角线遍历](https://leetcode.cn/problems/diagonal-traverse/)
 
-- 区间类
+### 区间类
 
   - [x] [56[M]. 合并区间](https://leetcode.cn/problems/merge-intervals/). 按照左端点排序，遍历所有区间根据规则判断是否和上一个合并
   - [x] [57[M]. 插入区间](https://leetcode.cn/problems/insert-interval/). 不断取区间和给定区间的并集，直到新区间和原区间断开（也就是 right < li）的时候将新区间插入
   - [x] [435[M].无重叠区间](https://leetcode.cn/problems/non-overlapping-intervals/). 本质和 300.最长上升子序列一样。动态规划,等价于选择数量最多的互不重叠的区间, dp[i]表示以第 i 个区间结束不重叠的最大区间数量
 
-- 双指针类
-
-  - [x] [88[E]. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/)。直接合并后再重新排序或使用双指针：用辅助数组，每次取更小的放到数组中。或者可以用逆序双指针，从尾部开始每次把最大的放到 array1 里，这样不用辅助数组。
-  - [x] [15[M]. 三数之和](https://leetcode.cn/problems/3sum/).核心思路是仍然是三重循环，但只枚举有序的三元组，并使用双指针避免重复枚举
-  - [ ] [18[M]. 四数之和](https://leetcode.cn/problems/4sum/).
-  - [ ] [11[M]. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/). 每次移动更矮的柱子，迭代最大值
-
-- 二分法
+### 二分法
 
   - [x] [35[E].搜索插入位置](https://leetcode.cn/problems/search-insert-position/). 二分法秒了
   - [x] [162[M].寻找峰值](https://leetcode.cn/problems/find-peak-element/). 二分查找，根据单调性迭代搜索区间
@@ -46,11 +39,19 @@
   - [ ] [4[H].寻找两个正序数组的中位数](https://leetcode.cn/problems/median-of-two-sorted-arrays/)。暴力方式是合并后排序。二分法
   - [ ] [34[M]. 在排序数组中查找元素的第一个和最后一个位置](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/). 两次二分查找，分别找起点和终点
 
-- 回溯法
+### 回溯法
 
-  - [x] [46[M]. 全排列](https://leetcode.cn/problems/permutations/). 递归回溯, 直接操作原数组，分成左右两半，遍历每一位数字，每次把当前数字交换到 idx 处，相当于固定开头，不重复地组合剩余的数字
-  - [x] [77[M]. 组合](https://leetcode.cn/problems/combinations/). 递归回溯。
-  - [x] [86[M]. N 皇后问题](). 回溯法，注意回溯时的状态恢复。注意分析递推条件：列不被占用、左上方不被占用、右上方不被占用。对角线的判断可以用行号和列号之差/和来表示
+- [x] [46[M]. 全排列](./Array/46.cc). 递归回溯, 直接操作原数组，分成左右两半，遍历每一位数字，每次把当前数字交换到 idx 处，相当于固定开头，不重复地组合剩余的数字
+- [x] [77[M]. 组合](./Array/77.cc). 递归回溯。
+- [x] [86[M]. N 皇后问题](./Array/86.cc). 回溯法，注意回溯时的状态恢复。注意分析递推条件：列不被占用、左上方不被占用、右上方不被占用。对角线的判断可以用行号和列号之差/和来表示
+
+### 前缀和/差分数组
+
+- [ ] [303[E]. 区域和检索 - 数组不可变](./Array/303.cc).
+- [ ] [307[M]. 区域和检索 - 数组可修改](./Array/307.cc).
+- [ ] [370[M]. 区间加法](./Array/370.cc).
+
+### 其他
 
 - [ ] [888[E].公平的糖果交换](https://leetcode.cn/problems/fair-candy-swap/)
 - [x] [121[E].买股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/)。记录最低点，求每天价格和最低点差值的最大值
@@ -169,27 +170,19 @@
 - [x] [147[M].对链表进行插入排序](https://leetcode.cn/problems/insertion-sort-list/). 链表分为有序和乱序，用当前节点遍历前面的有序链表，找到合适的插入位置。注意储存有序链表的末尾，并更新有序链表末尾节点的下一个节点
 - [x] [148[M].排序链表](https://leetcode.cn/problems/sort-list/). 147 的升级，要求时间复杂度达到 O logn. 用归并的思想递归切分子链表，再合并有序链表
 
-## Stack & Queue
+## StackQueue
 
 - [x] [20[M]. 有效的括号](https://leetcode.cn/problems/valid-parentheses/).
 - [x] [239[H]. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/)。用优先队列, 注意要不断弹出堆顶元素以确保堆顶元素在窗口内
 - [ ] [155[M]. 最小栈](https://leetcode.cn/problems/min-stack/)。用一个辅助栈存最小的元素
 - [x] [150[M]. 逆波兰表达式](https://leetcode.cn/problems/evaluate-reverse-polish-notation/?envType=study-plan-v2&envId=top-interview-150). 用栈存数字，遇到数字就压入，遇到操作符就连续弹两个数字，算完再压回去，直到遍历完成
+- [x] [前缀（波兰）表达式](). 同逆波兰，对输入 reverse 一下就行
 - [ ] NC76[M]. 两个栈实现队列
 
 ## String
 
 - [ ] [14[E].最长公共前缀](https://leetcode.cn/problems/longest-common-prefix/)
 - [ ] [344[E].反转字符串](https://leetcode.cn/problems/reverse-string/)
-
-- 双指针/滑动窗口类
-
-  - [x] [392[E].判断子序列](https://leetcode.cn/problems/is-subsequence/). 贪心匹配+双指针，或者用二维 dp 向后递推 dp[i][j]表示在目标串中从 i 向后字符 j 第一次出现的位置
-  - [x] [1100[M]. 长度为 K 的无重复字符子串](https://leetcode.cn/problems/find-k-length-substrings-with-no-repeated-characters/description/). 双指针滑动窗口，用 map 统计出现频次，动态移动左右指针
-  - [x] [3[M].无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/).滑动窗口，本质和 1100 一样，变成统计最大长度而已
-  - [x] [159[M]. 至多包含两个不同字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-most-two-distinct-characters/) 滑动窗口，哈希表存每个字符最右边的下标，一旦窗口内有 3 个不同的字符就删除最左边的，迭代更新最大值
-  - [x] [340[M]. 至多包含 K 个不同字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-most-k-distinct-characters/). 159 的升级版, 思路一样
-
 - [ ] [17[M]. 电话号码的字母组合](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/)/给你若干个 list，从每个 list 中选出一个元素，求全排列？
 - [ ] [678[M].有效的括号字符串](https://leetcode.cn/problems/valid-parenthesis-string/).左括号或\*入栈，遇到右括号分情况弹栈
 - [ ] [692[M].前 K 个高频单词](https://leetcode.cn/problems/top-k-frequent-words/). 哈希表+排序，注意排序的语法
@@ -222,6 +215,23 @@
 - [ ] [45[M].跳跃游戏 2](https://leetcode.cn/problems/jump-game-ii/).
 - [ ] [674[E].最长连续递增序列](https://leetcode.cn/problems/longest-continuous-increasing-subsequence/)。贪心法
 
+## Double Pointer
+
+- 数组
+
+  - [x] [88[E]. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/)。直接合并后再重新排序或使用双指针：用辅助数组，每次取更小的放到数组中。或者可以用逆序双指针，从尾部开始每次把最大的放到 array1 里，这样不用辅助数组。
+  - [x] [15[M]. 三数之和](https://leetcode.cn/problems/3sum/).核心思路是仍然是三重循环，但只枚举有序的三元组，并使用双指针避免重复枚举
+  - [ ] [18[M]. 四数之和](https://leetcode.cn/problems/4sum/).
+  - [x] [11[M]. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/). 每次移动更矮的柱子，迭代最大值
+
+- 字符串
+
+  - [x] [392[E].判断子序列](https://leetcode.cn/problems/is-subsequence/). 贪心匹配+双指针，或者用二维 dp 向后递推 dp[i][j]表示在目标串中从 i 向后字符 j 第一次出现的位置
+  - [x] [1100[M]. 长度为 K 的无重复字符子串](https://leetcode.cn/problems/find-k-length-substrings-with-no-repeated-characters/description/). 双指针滑动窗口，用 map 统计出现频次，动态移动左右指针
+  - [x] [3[M].无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/).滑动窗口，本质和 1100 一样，变成统计最大长度而已
+  - [x] [159[M]. 至多包含两个不同字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-most-two-distinct-characters/) 滑动窗口，哈希表存每个字符最右边的下标，一旦窗口内有 3 个不同的字符就删除最左边的，迭代更新最大值
+  - [x] [340[M]. 至多包含 K 个不同字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-most-k-distinct-characters/). 159 的升级版, 思路一样
+
 ## Numercial Computation
 
 - [ ] [7[M]. 整数反转](https://leetcode.cn/problems/reverse-integer/)
@@ -234,7 +244,7 @@
 - [x] [手撕矩阵乘法](./NumericalComputation/matrix_multiply.cc)
 - [ ] 求矩阵行列式
 
-## Sort/Search
+## SortSearch
 
 - [ ] [快速排序](./Sort/quick_sort.cc), 包括非递归版本
 - [ ] 归并排序
@@ -311,8 +321,8 @@
 
 - [ ] 元戎独创 3
 
-  > 给定 n,m.其中 n<=1e6, m <=1000  
-  > 给定一个 n 个元素的非负整数数组，问该数组是否存在一个非空序列，满足序列中的元素之和是 m 的倍数.  
+  > 给定 n,m.其中 n<=1e6, m <=1000
+  > 给定一个 n 个元素的非负整数数组，问该数组是否存在一个非空序列，满足序列中的元素之和是 m 的倍数.
   > 样例：
   > 3 5
   > 5 5 5
