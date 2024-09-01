@@ -65,5 +65,13 @@
         "activityBar.background": "#78C3A7",
         "titleBar.activeBackground": "#8DCCB5",
         "titleBar.activeForeground": "#0D1C16"
+    },
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": true,
+            "strings": true
+        },
+        "editor.acceptSuggestionOnEnter": "on"
     }
 }
